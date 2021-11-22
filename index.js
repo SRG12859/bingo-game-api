@@ -119,7 +119,12 @@ io.on('connection', ( socket ) => {
 
 	// If Anyone Disconnects from The socket remove it from the array 
 	socket.on("disconnect", (socket) => {
-		users_and_room.user.filter(user => user.userId !== socket.id);
+		users_and_room.user.filter(user => {
+			if(user.userId === socket.id) console.log(`User disconnected With id : ${user.userId} and UserName : ${user.username}`)
+			user.userId !== socket.id
+		});
+
+		
 	});
 }
 )
